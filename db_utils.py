@@ -4,10 +4,14 @@ import psycopg2
 from dotenv import load_dotenv
 
 load_dotenv()
+DATABASE_URL = os.getenv('DATABASE_URL')
 
 
 def get_db_connection():
-    conn = psycopg2.connect(os.getenv('POSTGRES_CONN_DETAIL'))
+    if os.getenv('ENVIRONMENT') == 'LOCAL':
+        conn = psycopg2.connect(os.getenv('POSTGRES_CONN_DETAIL'))
+    else:
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
     cursor = conn.cursor()
     return conn, cursor
 
