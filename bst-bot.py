@@ -16,10 +16,10 @@ bot = commands.Bot(command_prefix='!')
 
 @bot.event
 async def on_message(message):
-    if message.author == bot.user or not isinstance(message.channel, DMChannel):
+    if message.author == bot.user:
         return
 
-    if message.content == 'hi':
+    if message.content == 'hi' and isinstance(message.channel, DMChannel):
         response = 'hey'
         await message.channel.send(response)
     else:
