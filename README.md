@@ -1,2 +1,2 @@
 # bst-gsearch-bot
-bot for bst test
+bot for bst
