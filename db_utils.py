@@ -30,4 +30,6 @@ def get_recent(query):
     rows = cursor.fetchall()
     print('got recent queries successfully!')
     conn.close()
+    if not rows:
+        return 'No recent searches found for it.'
     return '\n'.join([r[0] for r in rows])
